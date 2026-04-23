@@ -1,310 +1,641 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <met#aeb3b8et="utf-8">
-        <title>Khilesh Maskare</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Free Website Template" name="keywords">
-        <meta content="Free Website Template" name="description">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Khilesh Maskare — Software Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        <!-- Favicon -->
-        <link href="img/profile_photo.png" rel="icon">
+    :root {
+      --bg: #f5f3ef;
+      --ink: #1a1814;
+      --muted: #6b6760;
+      --accent: #2c4a3e;
+      --line: #d8d4cc;
+      --tag-bg: #e8e4dc;
+    }
 
-        <!-- Google Web Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    html { scroll-behavior: smooth; }
 
-        <!-- Icon Font Stylesheet -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
 
-        <!-- Libraries Stylesheet -->
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-        <link href="lib/animate/animate.min.css" rel="stylesheet">
+    /* LAYOUT */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
 
-        <!-- Customized Bootstrap Stylesheet -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+    /* NAV */
+    nav {
+      padding: 28px 0 24px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
 
-        <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
-    </head>
+    .nav-name {
+      font-size: 15px;
+      font-family: 'DM Mono', monospace;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
 
-    <body>
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* HERO */
+    .hero {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.7s ease forwards 0.1s;
+    }
+
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 56px);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      color: var(--ink);
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-bio {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 10px 22px;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .btn-ghost {
+      border-color: var(--line);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--ink);
+      background: transparent;
+      color: var(--ink);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    section.visible {
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    /* EXPERIENCE */
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px 24px;
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .exp-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .exp-role {
+      font-size: 19px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .exp-company {
+      font-size: 15px;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+
+    .exp-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-align: right;
+      white-space: nowrap;
+      padding-top: 4px;
+    }
+
+    .exp-desc {
+      color: var(--muted);
+      font-size: 16px;
+      grid-column: 1 / -1;
+    }
+
+    .exp-bullets {
+      grid-column: 1 / -1;
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .exp-bullets li {
+      font-size: 16px;
+      color: var(--muted);
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 6px;
+      line-height: 1.65;
+    }
+
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--line);
+    }
+
+    /* PROJECTS */
+    .project-grid {
+      display: grid;
+      gap: 32px;
+    }
+
+    .project-item {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-item:last-child { border-bottom: none; }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      gap: 16px;
+    }
+
+    .project-name {
+      font-size: 19px;
+      font-weight: 500;
+    }
+
+    .project-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .project-link:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .project-desc {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 14px;
+      line-height: 1.7;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      background: var(--tag-bg);
+      color: var(--muted);
+      padding: 4px 10px;
+      letter-spacing: 0.04em;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+    }
+
+    .skill-group-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      font-size: 15px;
+      color: var(--muted);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--line);
+      line-height: 1.4;
+    }
+
+    .skill-list li:last-child { border-bottom: none; }
+
+    /* ABOUT */
+    .about-text {
+      font-size: 19px;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    .about-text strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* CONTACT */
+    .contact-line {
+      font-size: 22px;
+      margin-bottom: 32px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-item-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-item a {
+      font-size: 16px;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
+    }
+
+    .contact-item a:hover { border-color: var(--ink); }
+
+    /* FOOTER */
+    footer {
+      padding: 32px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ANIMATION */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      nav { flex-direction: column; gap: 16px; }
+      .exp-item { grid-template-columns: 1fr; }
+      .exp-date { text-align: left; }
+      .project-header { flex-direction: column; }
+      .contact-links { flex-direction: column; gap: 20px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- NAV -->
+    <nav>
+      <a href="#" class="nav-name">KM</a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+      <p class="hero-label">Software Engineer · Bhopal, India</p>
+      <h1>Khilesh<br/><em>Maskare</em></h1>
+      <p class="hero-bio">
+        Building production software for autonomous systems. Nearly two years designing and delivering internal platforms at the intersection of web engineering and AI data infrastructure.
+      </p>
+      <div class="hero-links">
+        <a href="mailto:khileshmaskare28@gmail.com" class="btn">Get in touch</a>
+        <a href="https://github.com/yourgithub" target="_blank" class="btn btn-ghost">GitHub</a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="btn btn-ghost">LinkedIn</a>
+        <a href="your-resume-link.pdf" target="_blank" class="btn btn-ghost">Résumé</a>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <section id="work">
+      <p class="section-label">Experience</p>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-role">Full Stack Developer</div>
+          <div class="exp-company">DeepEigen · Swaayatt Robots Pvt. Ltd.</div>
         </div>
-        <!-- Spinner End -->
+        <div class="exp-date">Jul 2024 — Present<br/>Bhopal, India</div>
+        <ul class="exp-bullets">
+          <li>Architected and built a role-based data operations platform serving 25+ daily annotators — handling data ingestion, automated image validation, real-time WebSocket progress tracking, attendance, and salary calculation. Replaced manual workflows improving efficiency by 80%.</li>
+          <li>Designed and delivered a browser-based annotation and augmentation platform with full editor capabilities — zoom, undo/redo, mask rendering, polygon overlays, and performance-optimized browser caching for large-scale visual datasets.</li>
+          <li>Deployed and optimized production infrastructure on AWS (EC2, S3, CloudFront), reducing monthly cloud costs from $800 to $300 — a 62.5% reduction.</li>
+          <li>Built a voice-controlled automation system integrating speech-to-text, RL-based backend execution, and PyQt for fully hands-free UI operations.</li>
+        </ul>
+      </div>
 
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4 sticky-lg-top vh-100">
-                    <div class="d-flex flex-column h-100 text-center overflow-auto shadow">
-                        <img class="w-100 img-fluid mb-4" src="img/profile_photo.png" alt="Image">
-                        <h1 class="text-primary mt-2">Khilesh Maskare</h1>
+    </section>
 
-                        <div class="mb-4" style="height: 22px;">
-                            <h4 id="typed-output" class="text-light"></h4>
-                        </div>
-                        
-                        <div class="d-flex justify-content-center mt-auto mb-3">
-                            <a class="btn btn-secondary btn-square mx-1" href="https://x.com/khilesh_maskare">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a class="btn btn-secondary btn-square mx-1" href="https://github.com/khileshmaskare34">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a class="btn btn-secondary btn-square mx-1" href="https://www.linkedin.com/in/khilesh-maskare-192248225/">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
-                        <div class="d-flex align-items-end justify-content-between border-top">
-                            <a href="" class="btn w-50 border-end">Download CV</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <!-- About Start -->
-                    <section class="py-5 border-bottom wow fadeInUp" data-wow-delay="0.1s">
-                        <h1 class="title pb-3 mb-5">About Me</h1>
-                        <p>
-                            I’m a Full Stack Developer with 1.5+ years of experience, focused on building scalable, reliable, and user-centric applications. I work across the full development cycle — from designing clean APIs to crafting intuitive frontend interfaces. 
-                            <br>
-                            I started my journey through two strong internships where I built complete production-ready web applications using Node.js, Express, EJS, MongoDB, and MySQL. Since then, I’ve worked on multiple real-world systems involving automation workflows, internal tools, data pipelines, UI components, and backend modules that handle real user operations.
-                            <br>
-                            I enjoy breaking down complex problems, writing clean code, and continuously improving my understanding of system design, backend architecture, and performance optimization. These days, I’m deepening my expertise in FastAPI, PostgreSQL, and scalable backend patterns — while preparing myself for bigger full-stack challenges ahead.
-                            <br>
-                            I believe in learning fast, executing faster, and building things that actually make a difference.
-                        </p>
-                        <div class="row mb-4">
-                            <div class="col-sm-6 py-1">
-                                <span class="fw-medium text-primary">Name:</span> Khilesh Maskare
-                            </div>
-                            <div class="col-sm-6 py-1">
-                                <span class="fw-medium text-primary">Birthday:</span> 28 March 2003
-                            </div>
-                            <div class="col-sm-6 py-1">
-                                <span class="fw-medium text-primary">Degree:</span> B.Tech
-                            </div>
-                            <div class="col-sm-6 py-1">
-                                <span class="fw-medium text-primary">Experience:</span> 1.6 Years
-                            </div>
-                            <div class="col-sm-6 py-1">
-                                <span class="fw-medium text-primary">Phone:</span> +91-9301785324
-                            </div>
-                            <div class="col-sm-6 py-1">
-                                <span class="fw-medium text-primary">Email:</span> khileshmaskare03@gmail.com
-                            </div>
-                            <div class="col-sm-6 py-1">
-                                <span class="fw-medium text-primary">Address:</span> Bhopal, India
-                            </div>
-                            <div class="col-sm-6 py-1">
-                                <span class="fw-medium text-primary">Freelance:</span> Available
-                            </div>
-                        </div>
-                        <div class="row g-4">
-                            <div class="col-md-4 col-lg-6 col-xl-4">
-                                <a href="https://leetcode.com/u/khileshmaskare/" class="btn-secondary d-flex bg-secondary p-4">
-                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">30+</h1>
-                                    <div class="ps-3">
-                                        <h5 class="mb-0">LeetCode</h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4 col-lg-6 col-xl-4">
-                                <a href="https://www.codechef.com/users/khileshmaskare" class="btn-secondary d-flex bg-secondary p-4">
-                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">450+</h1>
-                                    <div class="ps-3">
-                                        <h5 class="mb-0">CodeChef</h5>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </section>
-                    <!-- About End -->
+    <!-- PROJECTS -->
+    <section id="projects">
+      <p class="section-label">Projects</p>
 
-                    <!-- Skills Start -->
-                    <section class="py-5 border-bottom wow fadeInUp" data-wow-delay="0.1s">
-                        <h1 class="title pb-3 mb-5">Skills</h1>
-                    
-                        <div class="bubble-container">
-                    
-                            <div class="bubble bubble-lg">Python</div>
-                            <div class="bubble bubble-lg">JavaScript</div>
-                            <div class="bubble bubble-sm">MongoDB</div>
-                            <div class="bubble bubble-lg">React.js</div>
-                            <div class="bubble bubble-sm">MySQL</div>
-                            <div class="bubble bubble-lg">Node.js</div>
-                            <div class="bubble bubble-sm">Next.js</div>
-                            <div class="bubble bubble-md">PostgreSQL</div>
-                            <div class="bubble bubble-lg">FastAPI</div>
-                            <div class="bubble bubble-sm">Docker</div>
-                            <div class="bubble bubble-sm">Git</div>
-                            <div class="bubble bubble-md">AWS</div>
-                    
-                        </div>
-                    </section>
-                    <!-- Skills End -->
+      <div class="project-grid">
 
-                    <!-- Expericence Start -->
-                    <section class="py-5 wow fadeInUp" data-wow-delay="0.1s">
-                        <h1 class="title pb-3 mb-5">Experience</h1>
-                        <div class="border-start border-2 border-light pt-2 ps-5">
-
-                            <!-- Swaayatt Robots -->
-                            <div class="position-relative mb-4">
-                                <span class="bi bi-arrow-right fs-4 text-light position-absolute"
-                                    style="top: -5px; left: -50px;"></span>
-
-                                <h5 class="mb-1">Full Stack Developer</h5>
-                                <p class="mb-2">
-                                    <a class="btn btn-secondary"  href="https://www.linkedin.com/company/swaayatt-robots/posts/?feedView=all">
-                                        Swaayatt Robots (स्वायत्त रोबोट्स) 
-                                    </a>
-                                     / 
-                                    <a class="btn btn-secondary" href="https://www.linkedin.com/company/deepeigen/posts/?feedView=all">
-                                        DeepEigen
-                                    </a>
-                                    <small>Jul 2024 – Present</small>
-                                </p>
-
-                                <p>
-                                    Swaayatt Robots is a deep-tech autonomous driving startup focused on advanced robotics,
-                                    AI research, and internal tool development for large-scale perception and planning systems.
-                                </p>
-
-                                <ul class="text-light">
-                                    <li> Improved internal annotation workflow efficiency by 2×, reducing manual effort and removing dependency on Excel sheets.</li>
-                                    <li> Built a scalable full-stack dashboard used daily by 20+ annotators, ensuring smooth, error-free data flow.</li>
-                                    <li> Increased data security through strict access control, JWT authentication, and validated file-upload pipelines. </li>
-                                    <li> Reduced backend processing time and deployment issues by optimizing APIs, database queries, and AWS setup.</li>
-                                    <li> Delivered new product features that enhanced team productivity, including real-time updates, automation tools, and admin controls.</li>
-                                    <li> Collaborated with robotics and AI teams to integrate software tools with internal autonomous-driving workflows, improving system reliability. </li>
-                                </ul>
-                            </div>
-
-                            <!-- Random Forest Technology -->
-                            <div class="position-relative mb-4">
-                                <span class="bi bi-arrow-right fs-4 text-light position-absolute"
-                                    style="top: -5px; left: -50px;"></span>
-
-                                <h5 class="mb-1">Full Stack Developer Intern</h5>
-                                <p class="mb-2">Random Forest Technology | <small>Feb 2024 – Apr 2024</small></p>
-
-                                <p>
-                                    Random Forest Technology is a software development company delivering end-to-end web
-                                    solutions, focusing on backend engineering and scalable enterprise applications.
-                                </p>
-
-                                <ul class="text-light">
-                                    <li>Developed full-stack modules using Node.js, Express.js, and EJS templating.</li>
-                                    <li>Designed MySQL schema and optimized relational database performance.</li>
-                                    <li>Implemented authentication, sessions, and modular routing.</li>
-                                    <li>Built CRUD dashboards with server-side rendering.</li>
-                                    <li>Enhanced UI/UX consistency through collaboration with frontend teams.</li>
-                                </ul>
-                            </div>
-
-                            <!-- TechDigi Software Pvt Ltd -->
-                            <div class="position-relative mb-4">
-                                <span class="bi bi-arrow-right fs-4 text-light position-absolute"
-                                    style="top: -5px; left: -50px;"></span>
-
-                                <h5 class="mb-1">Full Stack Developer Intern</h5>
-                                <p class="mb-2">TechDigi Software Pvt Ltd | <small>Jul 2023 – Oct 2023</small></p>
-
-                                <p>
-                                    TechDigi Software is an IT services company delivering custom web applications,
-                                    modern UI/UX, and full-stack development solutions for clients across industries.
-                                </p>
-
-                                <ul class="text-light">
-                                    <li>Developed responsive UI using HTML, CSS, and JavaScript.</li>
-                                    <li>Built backend features with Node.js, Express.js, and MongoDB.</li>
-                                    <li>Participated in design, development & deployment phases.</li>
-                                    <li>Improved user experience by optimizing frontend–backend integration.</li>
-                                    <li>Collaborated with cross-functional teams to deliver complete product modules.</li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </section>
-                    <!-- Expericence End -->
-
-                    <!-- Contact Start -->
-                    <section class="py-5 wow fadeInUp" data-wow-delay="0.1s" id="contact">
-                        <h1 class="title pb-3 mb-5">Contact Me</h1>
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control border-0 bg-secondary" id="name" placeholder="Khilesh Maskare">
-                                        <label for="name">+91-9301785324</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control border-0 bg-secondary" id="email" placeholder="Your Email">
-                                        <label for="email">khileshmaskare03@gmail.com</label>
-                                    </div>
-                                </div>
-                               
-                            </div>
-                        </form>
-                    </section>
-                    <!-- Contact End -->
-                </div>
-            </div>
+        <div class="project-item">
+          <div class="project-header">
+            <div class="project-name">Data Operations Platform</div>
+          </div>
+          <p class="project-desc">
+            Internal annotation management system serving 25+ daily users across four roles. Built ZIP-based ingestion with automated image counting, real-time dashboards via WebSockets, salary calculation, and attendance tracking pipelines.
+          </p>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">Redux</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">WebSockets</span>
+            <span class="tag">AWS</span>
+          </div>
         </div>
 
-        
-        <!-- Back to Top -->
-        <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
-        
-        <script>
-            document.querySelectorAll('.bubble').forEach(bubble => {
-                bubble.style.animation = `float ${2 + Math.random() * 3}s ease-in-out infinite`;
-            });
-            
-        </script>
+        <div class="project-item">
+          <div class="project-header">
+            <div class="project-name">Annotation & Augmentation Platform</div>
+          </div>
+          <p class="project-desc">
+            Browser-based image labeling tool supporting bounding boxes, polygons, segmentation masks, and XML/TXT formats. Performance-optimized with browser caching strategies for large-scale visual datasets. Includes a separate augmentation pipeline.
+          </p>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
 
+        <div class="project-item">
+          <div class="project-header">
+            <div class="project-name">UPI Expense Analytics</div>
+            <a href="https://github.com/yourgithub" target="_blank" class="project-link">View project ↗</a>
+          </div>
+          <p class="project-desc">
+            Full stack financial analytics application processing raw UPI transaction data into categorized visual insights using a TF-IDF and Naive Bayes ML pipeline. Automated expense categorization with monthly trend charts.
+          </p>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Python</span>
+            <span class="tag">scikit-learn</span>
+          </div>
+        </div>
 
-            <style>
-            @keyframes float {
-                0% { transform: translateY(0px); }
-                50% { transform: translateY(-6px); }
-                100% { transform: translateY(0px); }
-            }
-            </style>
+        <div class="project-item">
+          <div class="project-header">
+            <div class="project-name">DeepEigen Course Platform</div>
+            <a href="https://deepeigen.com" target="_blank" class="project-link">Live site ↗</a>
+          </div>
+          <p class="project-desc">
+            Role-based course platform with TA and Admin authentication, flexible subscription billing with monthly, quarterly, and yearly installment options, and custom playlist creation.
+          </p>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">Redux</span>
+            <span class="tag">Django</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+        </div>
 
-            
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+      </div>
+    </section>
 
-        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- SKILLS -->
+    <section id="skills">
+      <p class="section-label">Skills</p>
+      <div class="skills-grid">
+        <div>
+          <p class="skill-group-label">Frontend</p>
+          <ul class="skill-list">
+            <li>React.js & Redux</li>
+            <li>Next.js</li>
+            <li>JavaScript & TypeScript</li>
+            <li>HTML5 & CSS3</li>
+          </ul>
+        </div>
+        <div>
+          <p class="skill-group-label">Backend</p>
+          <ul class="skill-list">
+            <li>FastAPI</li>
+            <li>Node.js & Express</li>
+            <li>Django</li>
+            <li>REST APIs & WebSockets</li>
+          </ul>
+        </div>
+        <div>
+          <p class="skill-group-label">Data & Infra</p>
+          <ul class="skill-list">
+            <li>PostgreSQL & MongoDB</li>
+            <li>AWS (EC2, S3, CloudFront)</li>
+            <li>Docker & Git</li>
+            <li>OpenCV & scikit-learn</li>
+          </ul>
+        </div>
+        <div>
+          <p class="skill-group-label">Currently Learning</p>
+          <ul class="skill-list">
+            <li>Data Structures & Algorithms</li>
+            <li>System Design</li>
+            <li>ROS2 Basics</li>
+            <li>ML Infrastructure</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-        <script>
-            var typed = new Typed("#typed-output", {
-                strings: [
-                    "Frontend Developer",
-                    "Backend Developer",
-                    "Full Stack Developer"
-                ],
-                typeSpeed: 60,
-                backSpeed: 30,
-                backDelay: 1000,
-                loop: true,
-                smartBackspace: true,
-                showCursor: true,
-                cursorChar: '|',
-            });
-        </script>
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
-    </body>
+    <!-- ABOUT -->
+    <section id="about">
+      <p class="section-label">About</p>
+      <p class="about-text">
+        I am a software engineer based in <strong>Bhopal, India</strong>, currently building data and annotation infrastructure for autonomous systems at Swaayatt Robots. I enjoy designing systems end-to-end — from database architecture to frontend interfaces — and taking full ownership of what I ship.<br/><br/>
+        Outside of work I am deepening my understanding of <strong>algorithms and system design</strong>, and exploring the intersection of web engineering and computer vision tooling. I am open to roles in autonomous systems, robotics, and ML infrastructure engineering.
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <p class="section-label">Contact</p>
+      <p class="contact-line">Open to new opportunities.</p>
+      <div class="contact-links">
+        <div class="contact-item">
+          <span class="contact-item-label">Email</span>
+          <a href="mailto:khileshmaskare28@gmail.com">khileshmaskare28@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-label">Phone</span>
+          <a href="tel:+919301785324">+91 93017 85324</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-label">LinkedIn</span>
+          <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-label">GitHub</span>
+          <a href="https://github.com/yourgithub" target="_blank">github.com/yourgithub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span class="footer-text">Khilesh Maskare · 2025</span>
+      <span class="footer-text">Bhopal, India</span>
+    </footer>
+
+  </div>
+
+  <script>
+    // Scroll reveal
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+</body>
 </html>
