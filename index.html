@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,13 +8,22 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
+    :root[data-theme="light"] {
       --bg: #f5f3ef;
       --ink: #1a1814;
       --muted: #6b6760;
       --accent: #2c4a3e;
       --line: #d8d4cc;
       --tag-bg: #e8e4dc;
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #141210;
+      --ink: #f0ece4;
+      --muted: #8a8480;
+      --accent: #7ab5a0;
+      --line: #2a2722;
+      --tag-bg: #1e1c19;
     }
 
     html { scroll-behavior: smooth; }
@@ -26,9 +35,9 @@
       font-size: 17px;
       line-height: 1.7;
       min-height: 100vh;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    /* LAYOUT */
     .container {
       max-width: 760px;
       margin: 0 auto;
@@ -41,7 +50,14 @@
       border-bottom: 1px solid var(--line);
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
+      transition: border-color 0.3s;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
     .nav-name {
@@ -51,12 +67,14 @@
       letter-spacing: 0.02em;
       color: var(--ink);
       text-decoration: none;
+      transition: color 0.3s;
     }
 
     .nav-links {
       display: flex;
       gap: 28px;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
@@ -71,6 +89,27 @@
 
     .nav-links a:hover { color: var(--ink); }
 
+    /* THEME TOGGLE */
+    .theme-toggle {
+      background: var(--tag-bg);
+      border: 1px solid var(--line);
+      cursor: pointer;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
     /* HERO */
     .hero {
       padding: 72px 0 56px;
@@ -78,6 +117,7 @@
       opacity: 0;
       transform: translateY(16px);
       animation: fadeUp 0.7s ease forwards 0.1s;
+      transition: border-color 0.3s;
     }
 
     .hero-label {
@@ -87,6 +127,7 @@
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 20px;
+      transition: color 0.3s;
     }
 
     .hero h1 {
@@ -96,11 +137,13 @@
       letter-spacing: -0.02em;
       margin-bottom: 24px;
       color: var(--ink);
+      transition: color 0.3s;
     }
 
     .hero h1 em {
       font-style: italic;
       color: var(--accent);
+      transition: color 0.3s;
     }
 
     .hero-bio {
@@ -109,6 +152,7 @@
       max-width: 580px;
       line-height: 1.75;
       margin-bottom: 36px;
+      transition: color 0.3s;
     }
 
     .hero-links {
@@ -151,6 +195,7 @@
       border-bottom: 1px solid var(--line);
       opacity: 0;
       transform: translateY(12px);
+      transition: border-color 0.3s;
     }
 
     section.visible {
@@ -164,6 +209,7 @@
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 36px;
+      transition: color 0.3s;
     }
 
     /* EXPERIENCE */
@@ -174,6 +220,7 @@
       margin-bottom: 40px;
       padding-bottom: 40px;
       border-bottom: 1px solid var(--line);
+      transition: border-color 0.3s;
     }
 
     .exp-item:last-child {
@@ -186,6 +233,7 @@
       font-size: 19px;
       font-weight: 500;
       margin-bottom: 2px;
+      transition: color 0.3s;
     }
 
     .exp-company {
@@ -193,6 +241,7 @@
       color: var(--accent);
       font-style: italic;
       margin-bottom: 12px;
+      transition: color 0.3s;
     }
 
     .exp-date {
@@ -203,12 +252,7 @@
       text-align: right;
       white-space: nowrap;
       padding-top: 4px;
-    }
-
-    .exp-desc {
-      color: var(--muted);
-      font-size: 16px;
-      grid-column: 1 / -1;
+      transition: color 0.3s;
     }
 
     .exp-bullets {
@@ -224,6 +268,7 @@
       position: relative;
       margin-bottom: 6px;
       line-height: 1.65;
+      transition: color 0.3s;
     }
 
     .exp-bullets li::before {
@@ -231,17 +276,16 @@
       position: absolute;
       left: 0;
       color: var(--line);
+      transition: color 0.3s;
     }
 
     /* PROJECTS */
-    .project-grid {
-      display: grid;
-      gap: 32px;
-    }
+    .project-grid { display: grid; gap: 0; }
 
     .project-item {
       padding: 28px 0;
       border-bottom: 1px solid var(--line);
+      transition: border-color 0.3s;
     }
 
     .project-item:last-child { border-bottom: none; }
@@ -257,6 +301,7 @@
     .project-name {
       font-size: 19px;
       font-weight: 500;
+      transition: color 0.3s;
     }
 
     .project-link {
@@ -281,6 +326,7 @@
       font-size: 16px;
       margin-bottom: 14px;
       line-height: 1.7;
+      transition: color 0.3s;
     }
 
     .tags {
@@ -296,6 +342,7 @@
       color: var(--muted);
       padding: 4px 10px;
       letter-spacing: 0.04em;
+      transition: all 0.3s;
     }
 
     /* SKILLS */
@@ -312,11 +359,10 @@
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 12px;
+      transition: color 0.3s;
     }
 
-    .skill-list {
-      list-style: none;
-    }
+    .skill-list { list-style: none; }
 
     .skill-list li {
       font-size: 15px;
@@ -324,6 +370,7 @@
       padding: 5px 0;
       border-bottom: 1px solid var(--line);
       line-height: 1.4;
+      transition: all 0.3s;
     }
 
     .skill-list li:last-child { border-bottom: none; }
@@ -334,11 +381,13 @@
       line-height: 1.8;
       color: var(--muted);
       max-width: 620px;
+      transition: color 0.3s;
     }
 
     .about-text strong {
       color: var(--ink);
       font-weight: 500;
+      transition: color 0.3s;
     }
 
     /* CONTACT */
@@ -347,6 +396,7 @@
       margin-bottom: 32px;
       color: var(--muted);
       font-style: italic;
+      transition: color 0.3s;
     }
 
     .contact-links {
@@ -367,6 +417,7 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
+      transition: color 0.3s;
     }
 
     .contact-item a {
@@ -375,7 +426,7 @@
       text-decoration: none;
       border-bottom: 1px solid var(--line);
       padding-bottom: 1px;
-      transition: border-color 0.2s;
+      transition: all 0.2s;
     }
 
     .contact-item a:hover { border-color: var(--ink); }
@@ -393,6 +444,7 @@
       font-size: 11px;
       color: var(--muted);
       letter-spacing: 0.04em;
+      transition: color 0.3s;
     }
 
     /* ANIMATION */
@@ -403,7 +455,9 @@
     /* RESPONSIVE */
     @media (max-width: 600px) {
       .container { padding: 0 20px; }
-      nav { flex-direction: column; gap: 16px; }
+      nav { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .nav-left { width: 100%; justify-content: space-between; }
+      .nav-links { flex-wrap: wrap; gap: 16px; }
       .exp-item { grid-template-columns: 1fr; }
       .exp-date { text-align: left; }
       .project-header { flex-direction: column; }
@@ -418,7 +472,10 @@
 
     <!-- NAV -->
     <nav>
-      <a href="#" class="nav-name">KM</a>
+      <div class="nav-left">
+        <a href="#" class="nav-name">KM</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☾</button>
+      </div>
       <ul class="nav-links">
         <li><a href="#work">Work</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -436,16 +493,15 @@
       </p>
       <div class="hero-links">
         <a href="mailto:khileshmaskare28@gmail.com" class="btn">Get in touch</a>
-        <a href="https://github.com/yourgithub" target="_blank" class="btn btn-ghost">GitHub</a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="btn btn-ghost">LinkedIn</a>
-        <a href="your-resume-link.pdf" target="_blank" class="btn btn-ghost">Résumé</a>
+        <a href="https://github.com/khileshmaskare34" target="_blank" class="btn btn-ghost">GitHub</a>
+        <a href="https://www.linkedin.com/in/khilesh-maskare-192248225/" target="_blank" class="btn btn-ghost">LinkedIn</a>
+        <a href="https://drive.google.com/file/d/1zNOBnhDQUmxvTWVJH2sU43nVO2pAyM1Q/view?usp=sharing" target="_blank" class="btn btn-ghost">Résumé</a>
       </div>
     </div>
 
     <!-- EXPERIENCE -->
     <section id="work">
       <p class="section-label">Experience</p>
-
       <div class="exp-item">
         <div>
           <div class="exp-role">Full Stack Developer</div>
@@ -459,30 +515,21 @@
           <li>Built a voice-controlled automation system integrating speech-to-text, RL-based backend execution, and PyQt for fully hands-free UI operations.</li>
         </ul>
       </div>
-
     </section>
 
     <!-- PROJECTS -->
     <section id="projects">
       <p class="section-label">Projects</p>
-
       <div class="project-grid">
 
         <div class="project-item">
           <div class="project-header">
             <div class="project-name">Data Operations Platform</div>
           </div>
-          <p class="project-desc">
-            Internal annotation management system serving 25+ daily users across four roles. Built ZIP-based ingestion with automated image counting, real-time dashboards via WebSockets, salary calculation, and attendance tracking pipelines.
-          </p>
+          <p class="project-desc">Internal annotation management system serving 25+ daily users across four roles. Built ZIP-based ingestion with automated image counting, real-time dashboards via WebSockets, salary calculation, and attendance tracking pipelines.</p>
           <div class="tags">
-            <span class="tag">React</span>
-            <span class="tag">Redux</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">WebSockets</span>
-            <span class="tag">AWS</span>
+            <span class="tag">React</span><span class="tag">Redux</span><span class="tag">Node.js</span>
+            <span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">WebSockets</span><span class="tag">AWS</span>
           </div>
         </div>
 
@@ -490,48 +537,33 @@
           <div class="project-header">
             <div class="project-name">Annotation & Augmentation Platform</div>
           </div>
-          <p class="project-desc">
-            Browser-based image labeling tool supporting bounding boxes, polygons, segmentation masks, and XML/TXT formats. Performance-optimized with browser caching strategies for large-scale visual datasets. Includes a separate augmentation pipeline.
-          </p>
+          <p class="project-desc">Browser-based image labeling tool supporting bounding boxes, polygons, segmentation masks, and XML/TXT formats. Performance-optimized with browser caching strategies for large-scale visual datasets. Includes a separate augmentation pipeline.</p>
           <div class="tags">
-            <span class="tag">React</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">OpenCV</span>
-            <span class="tag">Python</span>
+            <span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span>
+            <span class="tag">OpenCV</span><span class="tag">Python</span>
           </div>
         </div>
 
         <div class="project-item">
           <div class="project-header">
             <div class="project-name">UPI Expense Analytics</div>
-            <a href="https://github.com/yourgithub" target="_blank" class="project-link">View project ↗</a>
+            <a href="https://github.com/khileshmaskare34/UPI_Expense_analytics" target="_blank" class="project-link">View project ↗</a>
           </div>
-          <p class="project-desc">
-            Full stack financial analytics application processing raw UPI transaction data into categorized visual insights using a TF-IDF and Naive Bayes ML pipeline. Automated expense categorization with monthly trend charts.
-          </p>
+          <p class="project-desc">Full stack financial analytics application processing raw UPI transaction data into categorized visual insights using a TF-IDF and Naive Bayes ML pipeline. Automated expense categorization with monthly trend charts.</p>
           <div class="tags">
-            <span class="tag">React</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">Python</span>
-            <span class="tag">scikit-learn</span>
+            <span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span>
+            <span class="tag">Python</span><span class="tag">scikit-learn</span>
           </div>
         </div>
 
         <div class="project-item">
           <div class="project-header">
             <div class="project-name">DeepEigen Course Platform</div>
-            <a href="https://deepeigen.com" target="_blank" class="project-link">Live site ↗</a>
+            <a href="https://www.deepeigen.com/" target="_blank" class="project-link">Live site ↗</a>
           </div>
-          <p class="project-desc">
-            Role-based course platform with TA and Admin authentication, flexible subscription billing with monthly, quarterly, and yearly installment options, and custom playlist creation.
-          </p>
+          <p class="project-desc">Role-based course platform with TA and Admin authentication, flexible subscription billing with monthly, quarterly, and yearly installment options, and custom playlist creation.</p>
           <div class="tags">
-            <span class="tag">React</span>
-            <span class="tag">Redux</span>
-            <span class="tag">Django</span>
-            <span class="tag">PostgreSQL</span>
+            <span class="tag">React</span><span class="tag">Redux</span><span class="tag">Django</span><span class="tag">PostgreSQL</span>
           </div>
         </div>
 
@@ -605,24 +637,40 @@
         </div>
         <div class="contact-item">
           <span class="contact-item-label">LinkedIn</span>
-          <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
+          <a href="https://www.linkedin.com/in/khilesh-maskare-192248225/" target="_blank">khilesh-maskare</a>
         </div>
         <div class="contact-item">
           <span class="contact-item-label">GitHub</span>
-          <a href="https://github.com/yourgithub" target="_blank">github.com/yourgithub</a>
+          <a href="https://github.com/khileshmaskare34" target="_blank">khileshmaskare34</a>
         </div>
       </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-      <span class="footer-text">Khilesh Maskare · 2025</span>
+      <span class="footer-text">Khilesh Maskare · 2026</span>
       <span class="footer-text">Bhopal, India</span>
     </footer>
 
   </div>
 
   <script>
+    const toggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    // Load saved preference
+    const saved = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', saved);
+    toggle.textContent = saved === 'dark' ? '☀' : '☾';
+
+    toggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      toggle.textContent = next === 'dark' ? '☀' : '☾';
+      localStorage.setItem('theme', next);
+    });
+
     // Scroll reveal
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver((entries) => {
